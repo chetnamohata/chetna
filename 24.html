@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <title>Temperature Converter</title>
+        <style>
+            *{
+                background-color: burlywood;
+                color:brown;
+                font-size:15px;
+                font-family: sans-serif;
+                font-weight: 500;
+            }
+            .con{
+                margin-top: 50px;
+                padding: 25px;
+                height:400px;
+                width: 95%;
+            }
+            .con>.in{
+                margin: 25px;
+                padding: 25px;
+                border-color: rgba(37, 2, 2, 0.945);
+                border-width: 3px;
+                border-style: solid;
+            }
+            .con>.out{
+                margin: 25px;
+                padding: 25px;
+                border-color: rgba(37, 2, 2, 0.945);
+                border-width: 3px;
+                border-style: solid;
+            }
+            .btn{
+                margin:20px;
+                padding:20px;
+                font-size: 30px;
+                font-family: cursive;
+                font-weight: 700;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="temp" method="get">
+            <div class="con">
+                <div class="in">
+                    <label>Enter the temperature </label>
+                    <input type="number" name="input" required />
+                    <select name="inOp">
+                        <option value="K">Kelvin</option>
+                        <option value="C">Celsius</option>
+                        <option value="F">Fahrenhiet</option>
+                    </select>
+                </div>
+                <div class="out">
+                    <label>Desired Output</label>
+                    <input type="text" name="output" required />
+                    <select name="outOp">
+                        <option value="K">Kelvin</option>
+                        <option value="C">Celsius</option>
+                        <option value="F">Fahrenhiet</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div class="btn">
+            <button onclick="Convert()">Convert</button>
+        </div>
+        
+
+
+        <script>
+            function Convert(){
+                form=document.getElementById("temp");
+                input=parseFloat(form.elements[0].value);
+                inOp=form.elements[1].value;
+                outOp=form.elements[3].value;
+                if(inOp=="C" && outOp=="K")
+                {
+                    res=input+273 ;
+                }
+                else if(inOp=="C" && outOp=="F")
+                {
+                    res=input*(9/5)+32 ;
+                }
+                else if(inOp=="K" && outOp=="C")
+                {
+                    res=input-273 ;
+                }
+                else if(inOp=="K" && outOp=="F")
+                {
+                    res=(input-273)*(9/5)+32;
+                }
+                else if(inOp=="F" && outOp=="C")
+                {
+                    res=(input-32)*(5/9) ;
+                }
+                else if(inOp=="F" && outOp=="K")
+                {
+                    res=(input-32)*(5/9)-273 ;
+                }
+                else
+                {
+                    res=input ;
+                }
+                form.elements[2].value=res ;
+            }
+        </script>
+    </body>
+</html>
